@@ -1,61 +1,82 @@
+import { MelodiJS } from './melodijs.js';
+import { MelodiRouter } from './router.js';
+import { Header } from './components/Header.js';
+import { Footer } from './components/Footer.js';
+import { Home } from './components/Home.js';
+import { About } from './components/About.js';
+import { Parcours } from './components/Parcours.js';
+import { Skills } from './components/Skills.js';
+import { Projects } from './components/Projects.js';
+import { Contact } from './components/Contact.js';
+import { ProjectDetails } from './components/ProjectDetails.js';
 
-// Smooth scroll for nav links
-document.querySelectorAll('.nav-links a').forEach(link => {
-	link.addEventListener('click', function(e) {
-		const target = document.querySelector(this.getAttribute('href'));
-		if (target) {
-			e.preventDefault();
-			target.scrollIntoView({ behavior: 'smooth' });
-		}
-	});
+// --- Routes ---
+const routes = [
+	{
+		path: '/',
+		component: Home,
+		transition: 'fade'
+	},
+	{
+		path: '/about',
+		component: About,
+		transition: 'fade'
+	},
+	{
+		path: '/parcours',
+		component: Parcours,
+		transition: 'fade'
+	},
+	{
+		path: '/skills',
+		component: Skills,
+		transition: 'fade'
+	},
+	{
+		path: '/projects',
+		component: Projects,
+		transition: 'fade'
+	},
+	{
+		path: '/contact',
+		component: Contact,
+		transition: 'fade'
+	},
+	{
+		path: '/project/:id',
+		component: ProjectDetails,
+		transition: 'slide'
+	}
+];
+
+// --- Root App ---
+const App = {
+	components: {
+		'app-header': Header,
+		'app-footer': Footer
+	},
+	template: `
+        <div>
+            <app-header></app-header>
+            <main>
+                <router-view></router-view>
+            </main>
+            <app-footer></app-footer>
+        </div>
+    `
+};
+
+// Initialize MelodiJS
+const app = new MelodiJS({
+	...App
 });
 
-// Theme toggle (light/dark)
-const themeBtn = document.createElement('button');
-themeBtn.textContent = '🌙';
-themeBtn.className = 'theme-toggle';
-document.querySelector('.navbar').appendChild(themeBtn);
-
-themeBtn.addEventListener('click', () => {
-	document.body.classList.toggle('dark-theme');
-	themeBtn.textContent = document.body.classList.contains('dark-theme') ? '☀️' : '🌙';
+// Initialize Router
+const router = new MelodiRouter({
+	routes: routes
 });
 
-// Optional: Add dark theme styles
-const darkStyles = document.createElement('style');
-darkStyles.textContent = `
-	body.dark-theme {
-		background: #18181b;
-		color: #f3f4f6;
-	}
-	body.dark-theme main {
-		background: #23272f;
-		color: #f3f4f6;
-	}
-	body.dark-theme .navbar, body.dark-theme .logo {
-		color: #f3f4f6;
-	}
-	body.dark-theme .nav-links a {
-		color: #f3f4f6;
-	}
-	body.dark-theme .section h2 {
-		color: #38bdf8;
-	}
-	body.dark-theme .skills-list li, body.dark-theme .project-card {
-		background: #23272f;
-		color: #f3f4f6;
-		border-color: #38bdf8;
-	}
-	body.dark-theme .btn-primary {
-		background: #38bdf8;
-		color: #18181b;
-	}
-	body.dark-theme .btn-secondary {
-		background: #fbbf24;
-		color: #18181b;
-	}
-`;
-document.head.appendChild(darkStyles);
+// Install router plugin
+app.use(router);
 
-// Placeholder for project filtering (future enhancement)
-// document.querySelectorAll('.project-card').forEach(card => { ... });
+app.mount('#app');

@@ -1,0 +1,36 @@
+<section class="section project-details">
+    <div class="container">
+        <a href="#/" class="btn btn-secondary back-btn">← Back to Home</a>
+
+        <div class="project-header" v-if="project">
+            <h1>{{ project.title }}</h1>
+            <div class="project-meta">
+                <span class="tag" v-for="tech in project.technologies" :key="tech">{{ tech }}</span>
+            </div>
+        </div>
+
+        <div class="project-content" v-if="project">
+            <div class="project-image-large">
+                💻
+            </div>
+            <div class="project-description">
+                <h3>Overview</h3>
+                <p>{{ project.fullDescription }}</p>
+
+                <h3>Key Features</h3>
+                <ul>
+                    <li v-for="feature in project.features" :key="feature">{{ feature }}</li>
+                </ul>
+
+                <div class="project-links">
+                    <a :href="project.link" class="btn btn-primary" target="_blank">Live Demo</a>
+                    <a :href="project.github" class="btn btn-secondary" target="_blank">GitHub Repo</a>
+                </div>
+            </div>
+        </div>
+
+        <div v-else class="loading">
+            <p>Loading project details...</p>
+        </div>
+    </div>
+</section>

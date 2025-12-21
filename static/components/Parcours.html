@@ -1,0 +1,15 @@
+<section id="parcours" class="section">
+    <div class="container">
+        <h2 class="section-title">Parcours</h2>
+        <div class="timeline">
+            <div class="timeline-item" v-for="item in items" :key="item.id">
+                <div class="timeline-dot"></div>
+                <span class="timeline-date">{{ item.date }}</span>
+                <div class="timeline-content">
+                    <strong>{{ item.title }}</strong> - {{ item.place }}<br>
+                    {{ item.description }}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

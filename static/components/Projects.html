@@ -1,0 +1,15 @@
+<section id="projects" class="section">
+    <div class="container">
+        <h2 class="section-title">Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card" v-for="p in projects" :key="p.id">
+                <div class="project-image">💻</div>
+                <div class="project-content">
+                    <h3 class="project-title">{{ p.title }}</h3>
+                    <p class="project-desc">{{ p.description }}</p>
+                    <router-link :to="'/project/' + p.id" class="btn btn-secondary">View Details</router-link>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
