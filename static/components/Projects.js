@@ -3,9 +3,10 @@ export const Projects = {
     data: function () {
         return {
             projects: [
-                { id: 1, title: 'E-Commerce Platform', description: 'A full-featured online store with cart, checkout, and admin panel.', link: '#' },
-                { id: 2, title: 'Task Management App', description: 'A productivity tool for teams to track tasks and collaborate.', link: '#' },
-                { id: 3, title: 'Portfolio Website', description: 'This very website, built with MelodiJS and custom CSS.', link: '#' }
+                { id: 1, title: 'MelodiJS (Byt3Lab)', description: 'Framework JavaScript Ultra-léger (~3KB) axé sur la réactivité.', link: 'https://github.com/byt3lab/melodijs' },
+                { id: 2, title: 'MELODI (Byt3Lab)', description: 'ERP Modulaire et Extensible pour PME avec architecture plugin.', link: '#' },
+                { id: 3, title: 'Portfolio Personnel', description: 'Site vitrine et identité numérique développé avec MelodiJS.', link: 'https://github.com/gomsugaetant/me' },
+                { id: 4, title: 'Kwembou IP Law', description: 'Site web et gestion d\'infrastructure pour cabinet juridique.', link: 'https://kwembou-iplaw.com/' }
             ]
         };
     }

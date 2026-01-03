@@ -2,15 +2,18 @@
     <div class="container nav-container">
         <div class="logo">GOMSU GAETANT</div>
         <nav>
-            <ul class="nav-links">
-                <li><a href="#/">Home</a></li>
-                <li><a href="#/about">About</a></li>
-                <li><a href="#/parcours">Parcours</a></li>
-                <li><a href="#/skills">Skills</a></li>
-                <li><a href="#/projects">Projects</a></li>
-                <li><a href="#/contact">Contact</a></li>
+            <ul class="nav-links" :class="{ active: isMenuOpen }">
+                <li><a href="#/" @click="closeMenu">Home</a></li>
+                <li><a href="#/about" @click="closeMenu">About</a></li>
+                <li><a href="#/parcours" @click="closeMenu">Parcours</a></li>
+                <li><a href="#/skills" @click="closeMenu">Skills</a></li>
+                <li><a href="#/projects" @click="closeMenu">Projects</a></li>
+                <li><a href="#/contact" @click="closeMenu">Contact</a></li>
             </ul>
         </nav>
-        <button class="theme-toggle" @click="toggleTheme">{{ themeIcon }}</button>
+        <div class="header-controls">
+            <button class="theme-toggle" @click="toggleTheme">{{ themeIcon }}</button>
+            <button class="menu-toggle" @click="toggleMenu">{{ menuIcon }}</button>
+        </div>
     </div>
 </header>

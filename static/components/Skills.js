@@ -3,9 +3,11 @@ export const Skills = {
     data: function () {
         return {
             skills: [
-                'JavaScript (ES6+)', 'TypeScript', 'React', 'Vue.js', 'Angular',
-                'Node.js', 'Express', 'Python', 'Django', 'Flask',
-                'SQL', 'NoSQL', 'Docker', 'CI/CD', 'Git'
+                'JavaScript (ES6+)', 'TypeScript', 'Python',
+                'React.js', 'Next.js', 'Node.js', 'Express', 'Flask', 'FastApi',
+                'MongoDB', 'PostgreSQL', 'Mysql',
+                'Git/GitHub', 'Docker', 'Vercel', 'Netlify', 'WordPress', 'AWS', 'AZURE', 'GCP', 'Render',
+                'Résolution de problèmes', 'Travail en équipe', 'Agilité', 'Curiosité technologique'
             ]
         };
     }

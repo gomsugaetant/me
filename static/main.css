@@ -215,13 +215,17 @@ body.dark-theme .theme-toggle:hover {
     background-color: var(--dark-surface-2);
 }
 
+.menu-toggle {
+    display: none;
+}
+
 /* Hero Section */
 .hero {
     min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding-top: var(--header-height);
+    padding-top: calc(var(--header-height) + 4rem);
     position: relative;
     overflow: hidden;
 }
@@ -775,9 +779,53 @@ body.dark-theme .footer {
         font-size: 2.5rem;
     }
 
+    .hero {
+        padding-top: calc(var(--header-height) + 3rem);
+    }
+
+    .header-controls {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .menu-toggle {
+        display: block;
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+        padding: 0.5rem;
+        color: var(--text-main);
+    }
+
+    body.dark-theme .menu-toggle {
+        color: var(--dark-text-main);
+    }
+
     .nav-links {
-        display: none;
-        /* Mobile menu to be implemented if needed, or simple stack */
+        position: absolute;
+        top: var(--header-height);
+        left: 0;
+        right: 0;
+        background: var(--background);
+        flex-direction: column;
+        padding: 2rem;
+        gap: 1.5rem;
+        border-bottom: 1px solid var(--border);
+        transform: translateY(-150%);
+        transition: transform 0.3s ease;
+        z-index: 999;
+    }
+
+    body.dark-theme .nav-links {
+        background: var(--dark-background);
+        border-bottom: 1px solid var(--dark-border);
+    }
+
+    .nav-links.active {
+        transform: translateY(0);
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
     }
 
     .timeline::before {
