@@ -2,7 +2,8 @@ export const ProjectDetails = {
     template: { url: 'static/components/ProjectDetails.html' },
     data: function () {
         return {
-            project: null
+            project: null,
+            features: []
         };
     },
     hooks: {
@@ -30,8 +31,8 @@ export const ProjectDetails = {
                     technologies: ['Python', 'Flask', 'JavaScript', 'Docker', 'PostgreSQL'],
                     fullDescription: 'ERP Modulaire et Extensible pour PME. Architecture d\'un progiciel de gestion (ERP) robuste et scalable utilisant un système de plugins dynamiques. Développement d\'une interface web réactive et d\'un backend performant pour la gestion des processus métiers.',
                     features: ['Architecture Modulaire', 'Système de Plugins', 'Scalabilité', 'Backend Performant'],
-                    link: '#',
-                    github: '#'
+                    link: 'https://github.com/byt3lab/melodi',
+                    github: 'https://github.com/byt3lab/melodi'
                 },
                 '3': {
                     id: 3,
@@ -55,6 +56,7 @@ export const ProjectDetails = {
 
             if (id && projectsDB[id]) {
                 this.project = projectsDB[id];
+                this.features = projectsDB[id].features;
             } else {
                 this.project = { title: 'Project Not Found', fullDescription: 'The project you are looking for does not exist.' };
             }
