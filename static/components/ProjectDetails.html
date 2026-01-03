@@ -13,24 +13,37 @@
             <div class="project-image-large">
                 💻
             </div>
+
             <div class="project-description">
                 <h3>Overview</h3>
                 <p>{{ project.fullDescription }}</p>
 
-                <h3>Key Features</h3>
-                <ul>
-                    <li v-for="(f,i) in features" :key="i">{{ f }}</li>
-                </ul>
-                <!-- 
                 <div class="project-links">
                     <a :href="project.link" class="btn btn-primary" target="_blank">Live Demo</a>
                     <a :href="project.github" class="btn btn-secondary" target="_blank">GitHub Repo</a>
-                </div> -->
+                </div>
+
+                <div class="project-technologies" style="margin-top: 2rem;">
+                    <h3>Technologies</h3>
+                    <ul>
+                        <span class="tag" v-for="tech in project.technologies" :key="tech">
+                            {{ tech }}
+                        </span>
+                    </ul>
+                </div>
+
+                <div class="project-features">
+                    <h3>Features</h3>
+                    <ul>
+                        <span class="tag" v-for="f in project.features" :key="f">{{ f }}</span>
+                    </ul>
+                </div>
             </div>
         </div>
+
+
 
         <div v-else class="loading">
             <p>Loading project details...</p>
         </div>
-    </div>
 </section>

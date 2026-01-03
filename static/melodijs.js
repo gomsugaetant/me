@@ -1,6 +1,6 @@
 // --- Fine-grain reactivity primitives regroupées ---
 var __assign = (this && this.__assign) || function () {
-    __assign = Object.assign || function(t) {
+    __assign = Object.assign || function (t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
             s = arguments[i];
             for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
@@ -20,8 +20,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 var __generator = (this && this.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g = Object.create((typeof Iterator === "function" ? Iterator : Object).prototype);
-    return g.next = verb(0), g["throw"] = verb(1), g["return"] = verb(2), typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    var _ = { label: 0, sent: function () { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g = Object.create((typeof Iterator === "function" ? Iterator : Object).prototype);
+    return g.next = verb(0), g["throw"] = verb(1), g["return"] = verb(2), typeof Symbol === "function" && (g[Symbol.iterator] = function () { return this; }), g;
     function verb(n) { return function (v) { return step([n, v]); }; }
     function step(op) {
         if (f) throw new TypeError("Generator is already executing.");
@@ -62,7 +62,7 @@ var __read = (this && this.__read) || function (o, n) {
     }
     return ar;
 };
-var __values = (this && this.__values) || function(o) {
+var __values = (this && this.__values) || function (o) {
     var s = typeof Symbol === "function" && Symbol.iterator, m = s && o[s], i = 0;
     if (m) return m.call(o);
     if (o && typeof o.length === "number") return {
@@ -365,10 +365,12 @@ var Component = /** @class */ (function () {
             this.state.$emit = function (eventName, payload) {
                 try {
                     var local = comp_1._events[eventName] || [];
-                    local.forEach(function (h) { try {
-                        h.call(comp_1.state, payload);
-                    }
-                    catch (e) { } });
+                    local.forEach(function (h) {
+                        try {
+                            h.call(comp_1.state, payload);
+                        }
+                        catch (e) { }
+                    });
                     // bubble
                     // first try DOM parent chain
                     var p = comp_1.el.parentElement;
@@ -376,10 +378,12 @@ var Component = /** @class */ (function () {
                         var parentComp = p.__melodijs_instance;
                         if (parentComp) {
                             var handlers = parentComp._events[eventName] || [];
-                            handlers.forEach(function (h) { try {
-                                h.call(parentComp.state, payload);
-                            }
-                            catch (e) { } });
+                            handlers.forEach(function (h) {
+                                try {
+                                    h.call(parentComp.state, payload);
+                                }
+                                catch (e) { }
+                            });
                             // stop if handled? keep bubbling to allow multiple ancestors
                         }
                         p = p.parentElement;
@@ -392,10 +396,12 @@ var Component = /** @class */ (function () {
                         var lp_1 = comp_1._parent;
                         while (lp_1) {
                             var handlers = lp_1._events[eventName] || [];
-                            handlers.forEach(function (h) { try {
-                                h.call(lp_1.state, payload);
-                            }
-                            catch (e) { } });
+                            handlers.forEach(function (h) {
+                                try {
+                                    h.call(lp_1.state, payload);
+                                }
+                                catch (e) { }
+                            });
                             lp_1 = lp_1._parent;
                         }
                     }
@@ -684,8 +690,16 @@ var Component = /** @class */ (function () {
                             this.el.appendChild(this._fragment);
                         }
                         // 4. Run post-mount effects (v-if, v-for) now that parentNodes exist
-                        this._postMountEffects.forEach(function (fn) { return fn(); });
-                        this._postMountEffects = []; // Clear queue
+                        // Loop to handle nested effects (e.g. v-for inside v-if)
+                        var maxIterations = 10;
+                        var iterations = 0;
+                        while (this._postMountEffects.length > 0 && iterations < maxIterations) {
+                            var effects = this._postMountEffects;
+                            this._postMountEffects = []; // Clear before running
+                            effects.forEach(function (fn) { return fn(); });
+                            iterations++;
+                        }
+                        this._postMountEffects = []; // Ensure clear
                         // 5. Mount nested components
                         return [4 /*yield*/, this._mountNestedComponents()];
                     case 2:
@@ -1089,6 +1103,13 @@ var Component = /** @class */ (function () {
                     if (anchor.parentNode && currentEl) {
                         anchor.parentNode.insertBefore(currentEl, anchor);
                     }
+
+                    // Run any new effects generated by _walk (e.g. nested v-for)
+                    if (_this._postMountEffects.length > 0) {
+                        var effects = _this._postMountEffects;
+                        _this._postMountEffects = [];
+                        effects.forEach(function (fn) { return fn(); });
+                    }
                 }
                 else {
                     // No branch active
@@ -1379,10 +1400,12 @@ var Component = /** @class */ (function () {
         });
         this._listeners = [];
         // cleanup effects
-        this._effects.forEach(function (fn) { try {
-            fn();
-        }
-        catch (e) { } });
+        this._effects.forEach(function (fn) {
+            try {
+                fn();
+            }
+            catch (e) { }
+        });
         this._effects = [];
         // remove from app mounted list
         try {

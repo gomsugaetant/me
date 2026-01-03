@@ -6,10 +6,10 @@
                 <div class="project-image">💻</div>
                 <div class="project-content">
                     <h3 class="project-title">
-                        <router-link :to="'/project/' + p.id">{{ p.title }}</router-link>
+                        <a :href="'/#/project/' + p.id" class="btn">{{ p.title }}</a>
                     </h3>
                     <p class="project-desc">{{ p.description }}</p>
-                    <router-link :to="'/project/' + p.id" class="btn btn-secondary">View Details</router-link>
+                    <a :href="'/#/project/' + p.id" class="btn btn-secondary">View Details</a>
                 </div>
             </div>
         </div>
