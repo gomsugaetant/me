@@ -10,6 +10,7 @@ import { Skills } from './components/Skills.js';
 import { Projects } from './components/Projects.js';
 import { Contact } from './components/Contact.js';
 import { ProjectDetails } from './components/ProjectDetails.js';
+import { NotFound } from './components/NotFound.js';
 
 // --- Routes ---
 const routes = [
@@ -47,6 +48,11 @@ const routes = [
 		path: '/project/:id',
 		component: ProjectDetails,
 		transition: 'slide'
+	},
+	{
+		path: '*',
+		component: NotFound,
+		transition: 'fade'
 	}
 ];
 
@@ -122,7 +128,8 @@ const app = new MelodiJS({
 
 // Initialize Router
 const router = new MelodiRouter({
-	routes: routes
+	routes: routes,
+	// mode: 'history'
 });
 
 // Install plugins

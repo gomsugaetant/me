@@ -3,12 +3,12 @@
         <div class="logo">GOMSU GAETANT</div>
         <nav>
             <ul class="nav-links" :class="{ active: isMenuOpen }">
-                <li><a href="#/" @click="closeMenu">Home</a></li>
-                <li><a href="#/about" @click="closeMenu">About</a></li>
-                <li><a href="#/parcours" @click="closeMenu">Parcours</a></li>
-                <li><a href="#/skills" @click="closeMenu">Skills</a></li>
-                <li><a href="#/projects" @click="closeMenu">Projects</a></li>
-                <li><a href="#/contact" @click="closeMenu">Contact</a></li>
+                <li><router-link to="/" @click="closeMenu">Home</router-link></li>
+                <li><router-link to="/about" @click="closeMenu">About</router-link></li>
+                <li><router-link to="/parcours" @click="closeMenu">Parcours</router-link></li>
+                <li><router-link to="/skills" @click="closeMenu">Skills</router-link></li>
+                <li><router-link to="/projects" @click="closeMenu">Projects</router-link></li>
+                <li><router-link to="/contact" @click="closeMenu">Contact</router-link></li>
             </ul>
         </nav>
         <div class="header-controls">

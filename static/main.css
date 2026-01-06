@@ -94,6 +94,7 @@ img {
     margin-bottom: 3rem;
     background: linear-gradient(135deg, var(--primary), var(--secondary));
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
@@ -169,6 +170,7 @@ body.dark-theme .header {
     font-weight: 700;
     background: linear-gradient(to right, var(--primary), var(--secondary));
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
@@ -591,6 +593,7 @@ body.dark-theme .project-desc {
     font-weight: 700;
     background: linear-gradient(to right, var(--primary), var(--secondary));
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     display: inline-block;
 }
@@ -718,6 +721,7 @@ body.dark-theme .project-desc {
 .footer-tech span {
     background: linear-gradient(135deg, var(--primary), var(--accent));
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     font-weight: 600;
 }
@@ -998,4 +1002,48 @@ body.dark-theme .project-description ul {
     .project-image-large {
         height: 250px;
     }
+}
+
+/* 404 Page Styles */
+.not-found-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.not-found-content {
+    max-width: 500px;
+    margin: 0 auto;
+    animation: fadeUp 0.8s ease-out;
+}
+
+.not-found-icon {
+    font-size: 5rem;
+    margin-bottom: 1.5rem;
+}
+
+.not-found-title {
+    font-size: 6rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.not-found-subtitle {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.not-found-text {
+    color: var(--text-muted);
+    margin-bottom: 2.5rem;
+    font-size: 1.1rem;
+}
+
+body.dark-theme .not-found-text {
+    color: var(--dark-text-muted);
 }
